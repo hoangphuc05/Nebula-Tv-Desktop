@@ -21,14 +21,27 @@ public abstract class AuthenticatedBaseApi<T> : IAuthenticatedBaseApi<T>
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Token", token);
     }
 
-    public virtual async Task<T?> GetResponse()
+    public virtual async Task<T?> GetResponseAsync()
     {
-        T? user = default(T);
+        T? response = default(T);
         HttpResponseMessage responseMessage = await _client.GetAsync(_path);
         if (responseMessage.IsSuccessStatusCode)
         {
-            user = await responseMessage.Content.ReadAsAsync<T>();
+            response = await responseMessage.Content.ReadAsAsync<T>();
         }
-        return user;
+        return response;
+    }
+
+    public virtual async Task<T?> PostAsync(HttpContent? content = null)
+    {
+        T? response = default(T);
+        HttpResponseMessage responseMessage = await _client.PostAsync(_path, content);
+        
+        if (responseMessage.IsSuccessStatusCode)
+        {
+            response = await responseMessage.Content.ReadAsAsync<T>();
+        }
+        return response;
+
     }
 }

@@ -7,11 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+      <PackageReference Include="Autofac" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="UsersApi\Model" />
+      <ProjectReference Include="..\NebulaApi\NebulaApi.csproj" />
     </ItemGroup>
 
 </Project>
