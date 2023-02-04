@@ -1,12 +1,29 @@
 using System.Security.Authentication;
 using NebulaApi.UsersApi;
 using NebulaApi.UsersApi.Model;
+using System.IdentityModel.Tokens.Jwt;
+using NebulaApi.Utilities;
 
 namespace NebulaApi;
 
 public class Nebula
 {
     private UserModel? _user;
+
+    private string _bearer = "";
+
+    public string Bearer
+    {
+        get
+        {
+            if (!JwtHelper.IsValid(_bearer))
+            {
+                _bearer = Task.Run(async () => await JwtHelper.RefreshToken(Token)).Result?.Token ?? "";
+            }
+
+            return _bearer;
+        }
+    }
 
     public UserModel User
     {
@@ -35,6 +52,5 @@ public class Nebula
         var token = await new UserInfo(Token).GetResponseAsync();
         return token != null;
     }
-    
     
 }

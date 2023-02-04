@@ -8,6 +8,8 @@ namespace Infrastructure;
 public class CoreInfrastructure : ICoreInfrastructure
 {
     public Nebula? NebulaObject { get; set; }
+
+    public IWindowViewModel CurrentWindow;
     
     private static CoreInfrastructure? _currentInstance = null;
     public static CoreInfrastructure Create()

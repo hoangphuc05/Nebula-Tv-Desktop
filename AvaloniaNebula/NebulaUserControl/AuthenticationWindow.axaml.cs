@@ -1,10 +1,11 @@
-using Avalonia;
+using System;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using AvaloniaNebula.NebulaUserControl.Interface;
 using AvaloniaNebula.ViewModels;
 
-namespace AvaloniaNebula.Views;
+namespace AvaloniaNebula.NebulaUserControl;
 
 public partial class AuthenticationWindow : UserControl
 {
@@ -24,6 +25,8 @@ public partial class AuthenticationWindow : UserControl
         if (DataContext is AuthenticationUCViewModel viewModel)
         {
             viewModel.Login();
+
         }
     }
+
 }

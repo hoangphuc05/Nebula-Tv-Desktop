@@ -1,4 +1,5 @@
 using Avalonia.Controls;
+using AvaloniaNebula.NebulaUserControl;
 using AvaloniaNebula.ViewModels;
 using Infrastructure;
 

@@ -13,5 +13,5 @@
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
-        <ContentControl x:Name="XMainContent"/>
+        <ContentControl x:Name="XMainContent" Content="{Binding CurrentUc, Mode=OneWay}"/>
 </Window>
