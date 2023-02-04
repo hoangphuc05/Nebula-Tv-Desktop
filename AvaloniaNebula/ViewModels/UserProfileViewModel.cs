@@ -26,9 +26,9 @@ public class UserProfileViewModel : ReactiveObject
     public UserProfileViewModel(ICoreInfrastructure coreInfrastructure)
     {
         _coreInfrastructure = coreInfrastructure;
-        Task.Run(async () =>
-        {
-            User = await (new UserInfo(coreInfrastructure.Token)).GetResponseAsync();
-        });
+        // Task.Run(async () =>
+        // {
+        //     User = await (new UserInfo(coreInfrastructure.Token)).GetResponseAsync();
+        // });
     }
 }
